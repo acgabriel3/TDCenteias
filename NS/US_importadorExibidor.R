@@ -15,13 +15,18 @@ importadorUI <- function(id) {
     
     selectInput(inputId = ns("formato"), choices = c(".csv", ".dbf"), multiple = TRUE, label = "Selecione o tipo de arquivo para importacao"), 
     
-    actionButton(inputId = ns("importar"), label = "Importar")
+    actionButton(inputId = ns("importar"), label = "Importar"),
     
     #***
     #Acrescentar opcao do usuario escolher a funcao e tipo de arquivo para leitura
     
     #***
     #Pensar em opcao para deszipar arquivos
+    
+    #***
+    #Mostrar tipo do arquivo 
+    # textOutput(outputId = ns("rep_serie_historia"))
+    dataTableOutput(outputId = ns("rep_serie_historia"))
   ) 
   
 }
@@ -78,5 +83,36 @@ importadorServer <- function(input, output, session) {
               variaveis <<- importador()
                
                )
+  
+  output$rep_serie_historia <- renderDataTable({
+    
+    input$importar
+    
+    dataFrame <- data.frame(tabela = NULL, banco = NULL, serie_historica = NULL)
+    
+    if(is.null(variaveis)) {
+    
+      dataFrame <- data.frame(tabela = "aguardando importacao", banco = "aguardando importacao", serie_historica = "aguardando importacao")
+      
+      return(dataFrame)
+    
+    } else {
+      
+      for(i in 1:length(variaveis)) {
+        
+        analise <- verifica_serie_historica(nomeTabela = variaveis[i], metaDados = metaDados)
+        
+        
+        aux <- data.frame(tabela = variaveis[i], banco = analise[1], serie_historica = analise[2])
+        
+        dataFrame <- rbind(dataFrame, aux)  
+        
+      }
+      
+      return(dataFrame)
+      
+    }
+    
+  })
   
 }

@@ -1,4 +1,5 @@
 library(shiny)
+library(jsonlite)
 # library(shinyjs)
 
 source("CRISPDM.R")
@@ -25,6 +26,8 @@ ui <- fluidPage(
 
 server <- function(input, output, session) {
   
+  metaDados <<- fromJSON("NS/metaDados/metadados_bancos.json")
+  variaveis <<- NULL
   callModule(importadorServer, "importador")
   
 }
