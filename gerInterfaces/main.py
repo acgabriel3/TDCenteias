@@ -13,12 +13,11 @@ import definicao.df.routes as df
 
 #Define o processo main que aguarda mensagens 
 
-class teste():
+class teste:
     def main():
+        return
             
             #aguarda mensagens da camada de apresentacao e envia respostas
-
-
 
 
 #--- Apenas alguma definicoes de arquitetura:
