@@ -16,7 +16,16 @@ class dataFrame:
         # }
 
         #Ainda nao consegui setar o linkServico corretamente
-        respostaPadrao = requests.get(url = 'http://localhost:8001/dataframe')
+
+        PARAMS = {
+            'servico' : 'teste',
+            'a' : 10,
+            'c' : 3,
+            'b' : 4        
+            }
+
+        respostaPadrao = requests.get(url = 'http://localhost:8001/receiver',
+                                      params = PARAMS)
 
         resp.body = json.dumps(respostaPadrao.json())
 
