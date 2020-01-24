@@ -25,9 +25,9 @@ read <- function() {
   
 }
 
-teste <- function(a, b, c) {
+teste <- function(a, b, c, d, e, f) {
   
-  return(a + b - c)
+  return(a + b - c + d + e + f)
   
   
 }
@@ -39,8 +39,6 @@ function(req, res) {
   resposta <<- res
   
   if(!is.null(req$args$servico)) {
-    
-    print(req$args$servico)
     
     comando <- req$args[[3]] %% '('
     

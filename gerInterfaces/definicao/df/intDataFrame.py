@@ -18,10 +18,8 @@ class dataFrame:
         #Ainda nao consegui setar o linkServico corretamente
 
         PARAMS = {
-            'servico' : 'teste',
-            'a' : 10,
-            'c' : 3,
-            'b' : 4        
+            'servico' : 'cabeca',
+            'size' : '10'    
             }
 
         respostaPadrao = requests.get(url = 'http://localhost:8001/receiver',
