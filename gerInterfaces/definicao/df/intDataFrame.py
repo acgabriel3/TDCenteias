@@ -18,8 +18,9 @@ class dataFrame:
         #Ainda nao consegui setar o linkServico corretamente
 
         PARAMS = {
-            'servico' : 'cabeca',
-            'size' : 10
+            'servico' : 'read',
+            'arquivo' : '"IDENG99.dbf"',
+            'caminho' : '"dados"'
             
             }
 
