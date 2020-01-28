@@ -19,7 +19,8 @@ class dataFrame:
 
         PARAMS = {
             'servico' : 'cabeca',
-            'size' : '10'    
+            'size' : 10
+            
             }
 
         respostaPadrao = requests.get(url = 'http://localhost:8001/receiver',
@@ -49,7 +50,7 @@ class celula:
     def __init__(self):
         self.linkServico = None   
 
-    def setLink(self, link):
+    def setLink(self, linkServico):
         self.linkServico = linkServico 
 
     def on_get(self, req, resp):

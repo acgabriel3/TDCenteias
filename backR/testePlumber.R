@@ -1,7 +1,7 @@
 library(dplyr)
 library(foreign)
 
-'%%' <- function(a,b) paste0(a,b)
+'%%' <- function(a,b) paste0(a,b, sep = "")
 
 #* @get /receiver
 function() {
@@ -17,9 +17,13 @@ cabeca <- function(size) {
 }
 
 
-read <- function() {
+read <- function(caminho = NULL, arquivo) {
   
-  dado <<- read.dbf("dados/IDENG99.dbf")
+  path <- paste(caminho, arquivo, sep = '/')
+  
+  print(path)
+  
+  dado <<- read.dbf(file = path)
   
   return(tibble(a = 'funcionou!'))
   
@@ -53,6 +57,8 @@ function(req, res) {
     }
     
     comando <- comando %% ')'
+    
+    print(comando)
     
     return(eval(parse(text = comando)))
     
