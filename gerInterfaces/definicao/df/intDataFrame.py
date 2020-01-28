@@ -16,7 +16,7 @@ class dataFrame:
         # }
 
         #Ainda nao consegui setar o linkServico corretamente
-
+        
         PARAMS = {
             'servico' : 'read',
             'arquivo' : '"IDENG99.dbf"',
@@ -25,7 +25,7 @@ class dataFrame:
             }
 
         respostaPadrao = requests.get(url = 'http://localhost:8001/receiver',
-                                      params = PARAMS)
+                                      params = req.params)
 
         resp.body = json.dumps(respostaPadrao.json())
 

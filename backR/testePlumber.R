@@ -36,6 +36,15 @@ teste <- function(a, b, c, d, e, f) {
   
 }
 
+
+mapearDiretorio <- function(path) {
+  
+  print(path)
+  
+  return(list.files(path = path))
+  
+}
+
 #* @filter manager
 function(req, res) {
   

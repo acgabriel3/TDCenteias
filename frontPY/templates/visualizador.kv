@@ -1,14 +1,24 @@
 <construtorTelas>:
 
+    arquivos: arquivos
+
     TabbedPanelItem:
         text: 'Visualizador'
+
         BoxLayout:
             orientation: 'vertical'
+            
+            BoxLayout:
+                TextInput:
+                    id: arquivos
+                    text: 'esperando mapeamento'
+                    show_errors: True
+
             BoxLayout:
                 size_hint_y: None
                 height: 30
                 Button:
-                    text: 'Load'
+                    text: 'Escolher diretório'
                     on_press: root.show_load()
 
 <LoadDialog>:
@@ -27,5 +37,5 @@
                 on_press: root.cancel()
 
             Button:
-                text: "Load"
+                text: "Selecionar diretório"
                 on_press: root.load(filechooser.path)

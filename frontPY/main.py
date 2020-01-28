@@ -21,7 +21,7 @@ from kivy.lang import Builder
 from kivy.uix.popup import Popup
 
 import os
-
+import json
 
 #Definicao do centro kv da aplicacao
 Builder.load_string("""
@@ -43,6 +43,7 @@ class construtorTelas(TabbedPanel):
 #         filenames.each(file Builder
 #                           .load_file('templates/' + file + '.kv'))
     diretorio = ''
+    arquivos = ObjectProperty(None)
     loadfile = ObjectProperty(None)
 
     def dismiss_popup(self):
@@ -56,7 +57,19 @@ class construtorTelas(TabbedPanel):
 
     def load(self, path):
         self.diretorio = os.path.join(path)
+
+        PARAMS = {
+            'servico' : 'mapearDiretorio',
+            'path' : ('"' + self.diretorio.replace('\\', '/') + '"')
+        }
+
+
+        self.arquivos.text = str(requests.get('http://localhost:8000/df/dataframe',   params = PARAMS).content)
+        # self.arquivos.text = PARAMS['path']
         self.dismiss_popup()
+
+    # def mapeia(diretorio):
+
 
 class TabbedPanelApp(App):
     def build(self):
